@@ -6,4 +6,26 @@
 # Визуализируйте:
 # Само поле (где мины выделены красным).
 # Поле с числами, где указано количество мин вокруг каждой клетки (для наглядности).
-#
+
+import numpy as np
+import matplotlib.pyplot as plt
+import random
+
+from PIL.EpsImagePlugin import field
+
+ind = [random.randint(1, 100) for i in range(15)]
+
+while len(set(ind)) < 15:
+    ind = [random.randint(1, 100) for i in range(15)]
+
+field = [0 for i in range(100)]
+
+for i in range(15):
+    field[ind[i]] = -1
+
+field = np.array(field)
+np.matrix(field.reshape(10, 10))
+
+fig, ax = plt.subplots()
+plt.imshow(field, cmap="hot")
+plt.show()
